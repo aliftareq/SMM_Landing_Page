@@ -1,28 +1,61 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LockKeyhole, Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <>
       <nav className="w-full flex justify-center pt-8">
         <div
-          className="
+          className={`
             w-[90%]
-            max-w-[1200px]
-            bg-white
+            max-w-300
+
             rounded-xl
+
             px-6
             py-3
+
             flex
             items-center
             justify-between
-          "
+
+            transition-all
+            duration-300
+
+            ${
+              scrolled
+                ? `
+                  bg-white/30
+                  backdrop-blur-xl
+                  border
+                  border-white/40
+                  shadow-lg
+                `
+                : `
+                  bg-white
+                `
+            }
+          `}
         >
           {/* Logo */}
+
           <h1
             className="
               text-[24px]
@@ -34,6 +67,7 @@ export default function Navbar() {
           </h1>
 
           {/* Desktop Navigation */}
+
           <div
             className="
               hidden
@@ -54,6 +88,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Sign In */}
+
           <button
             className="
               hidden
@@ -79,7 +114,8 @@ export default function Navbar() {
             <span className="font-bold">Sign In</span>
           </button>
 
-          {/* Mobile Hamburger */}
+          {/* Mobile Menu Button */}
+
           <button className="lg:hidden" onClick={() => setOpen(true)}>
             <Menu size={28} />
           </button>
@@ -87,26 +123,28 @@ export default function Navbar() {
       </nav>
 
       {/* Overlay */}
+
       {open && (
         <div
           className="
-              fixed
-              inset-0
-              bg-black/40
-              z-40
-            "
+            fixed
+            inset-0
+            bg-black/40
+            z-40
+          "
           onClick={() => setOpen(false)}
         />
       )}
 
       {/* Mobile Drawer */}
+
       <aside
         className={`
           fixed
           top-0
           left-0
           h-full
-          w-[280px]
+          w-70
           bg-white
           z-50
           p-8
@@ -116,7 +154,13 @@ export default function Navbar() {
           ${open ? "translate-x-0" : "-translate-x-full"}
         `}
       >
-        <div className="flex justify-between items-center">
+        <div
+          className="
+            flex
+            justify-between
+            items-center
+          "
+        >
           <h2 className="text-xl font-bold">SMM Panel</h2>
 
           <button onClick={() => setOpen(false)}>
