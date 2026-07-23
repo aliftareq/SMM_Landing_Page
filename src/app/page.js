@@ -1,3 +1,4 @@
+import AboutSection from "@/components/AboutSection";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import PromotionServices from "@/components/PromotionServices";
@@ -7,6 +8,7 @@ export default function Home() {
     <main>
       <Hero />
       <PromotionServices />
+      <AboutSection />
     </main>
   );
 }
