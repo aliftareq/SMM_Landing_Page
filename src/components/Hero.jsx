@@ -80,7 +80,7 @@ export default function Hero() {
       </div>
 
       {/* Floating Navbar */}
-      <div className="relative z-20">
+      <div className="relative z-20 fixed">
         <Navbar />
       </div>
 
