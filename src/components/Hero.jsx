@@ -1,8 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
+"use client";
 
 import Navbar from "./Navbar";
-import { Lock, Eye, User, LockKeyhole } from "lucide-react";
+import { motion } from "framer-motion";
 import heroImage from "../assets/images/hero-image.png";
+import { UserRound, LockKeyhole } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -83,7 +85,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Fixed Navbar */}
+      {/* Navbar */}
 
       <div className="fixed top-0 left-0 w-full z-100">
         <Navbar />
@@ -114,9 +116,23 @@ export default function Hero() {
             mx-auto
           "
         >
-          {/* Left Content */}
+          {/* LEFT CONTENT */}
 
-          <div className="w-full lg:w-[55%]">
+          <motion.div
+            className="w-full lg:w-[55%]"
+            initial={{
+              opacity: 0,
+              x: -80,
+            }}
+            animate={{
+              opacity: 1,
+              x: 0,
+            }}
+            transition={{
+              duration: 0.8,
+              ease: "easeOut",
+            }}
+          >
             <h1
               className="
                 text-4xl
@@ -145,12 +161,168 @@ export default function Hero() {
               delivery, affordable pricing, and reliable SMM services.
             </p>
 
-            {/* Keep your existing form here */}
-          </div>
+            {/* LOGIN FORM */}
 
-          {/* Right Image */}
+            <div className="mt-7">
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-sm font-bold text-black">
+                    User Name
+                  </label>
 
-          <div
+                  <div
+                    className="
+                      mt-2
+                      h-10
+                      border
+                      border-orange-400
+                      rounded-xl
+                      bg-white
+                      flex
+                      items-center
+                      px-4
+                      text-sm
+                      text-gray-500
+                    "
+                  >
+                    <div className="flex items-center gap-2">
+                      <UserRound
+                        size={16}
+                        strokeWidth={1.8}
+                        className="text-gray-500"
+                      />
+
+                      <span>user name</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="text-sm font-bold text-black">
+                    Password
+                  </label>
+
+                  <div
+                    className="
+                      mt-2
+                      h-10
+                      border
+                      border-orange-400
+                      rounded-xl
+                      bg-white
+                      flex
+                      items-center
+                      justify-between
+                      px-4
+                      text-sm
+                      text-gray-500
+                    "
+                  >
+                    <div className="flex items-center gap-2">
+                      <LockKeyhole
+                        size={16}
+                        strokeWidth={1.8}
+                        className="text-gray-500"
+                      />
+
+                      <span>********</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className="
+                  flex
+                  justify-between
+                  items-center
+                  mt-3
+                  text-xs
+                "
+              >
+                <label className="flex items-center gap-2">
+                  <span
+                    className="
+                      w-3
+                      h-3
+                      border
+                      border-orange-400
+                      rounded-full
+                    "
+                  />
+                  Remember me
+                </label>
+
+                <span className="text-red-500">Forgot password?</span>
+              </div>
+
+              <div
+                className="
+                  flex
+                  gap-4
+                  mt-6
+                "
+              >
+                <button
+                  className="
+                    w-1/2
+                    font-bold
+                    h-10
+                    rounded-xl
+                    text-white
+                    text-sm
+                    bg-[linear-gradient(90deg,#FBBD08_0%,#F47B20_25%,#C4272E_45%,#8B1A4A_70%,#3D1053_100%)]
+                  "
+                >
+                  Sign In
+                </button>
+
+                <button
+                  className="
+                    w-1/2
+                    h-10
+                    rounded-xl
+                    border
+                    font-bold
+                    border-orange-400
+                    bg-white
+                    text-sm
+                    flex
+                    items-center
+                    justify-center
+                    gap-3
+                  "
+                >
+                  <GoogleIcon className="w-5 h-5" />
+                  Sign In with Google
+                </button>
+              </div>
+
+              <p
+                className="
+                  mt-3
+                  text-xs
+                  text-gray-600
+                "
+              >
+                Don&apos;t have an account?
+                <span
+                  className="
+                    text-orange-500
+                    ml-1
+                    font-medium
+                    underline
+                  "
+                >
+                  Create an Account
+                </span>
+              </p>
+            </div>
+          </motion.div>
+
+          {/* RIGHT IMAGE */}
+
+          <motion.div
             className="
               w-full
               lg:w-[45%]
@@ -158,6 +330,19 @@ export default function Hero() {
               justify-center
               lg:justify-end
             "
+            initial={{
+              opacity: 0,
+              x: 80,
+            }}
+            animate={{
+              opacity: 1,
+              x: 0,
+            }}
+            transition={{
+              duration: 0.8,
+              delay: 0.15,
+              ease: "easeOut",
+            }}
           >
             <div
               className="
@@ -179,6 +364,8 @@ export default function Hero() {
                   rounded-3xl
                 "
               />
+
+              {/* Google Review Badge */}
 
               <div
                 className="
@@ -207,7 +394,7 @@ export default function Hero() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
@@ -224,7 +411,7 @@ function GoogleIcon({ className }) {
 
       <path
         fill="#34A853"
-        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+        d="M12 23c2.97 0 2.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
       />
 
       <path
