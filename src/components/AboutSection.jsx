@@ -15,6 +15,7 @@ export default function AboutSection() {
 
   return (
     <section
+      id="about"
       className="
         w-full
         bg-[#fffaf5]

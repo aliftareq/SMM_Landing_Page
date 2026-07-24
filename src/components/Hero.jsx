@@ -8,7 +8,10 @@ import { UserRound, LockKeyhole } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#fff8f3]">
+    <section
+      id="home"
+      className="relative min-h-screen overflow-hidden bg-[#fff8f3]"
+    >
       {/* Background Gradient Layer */}
       <div
         className="absolute inset-0"

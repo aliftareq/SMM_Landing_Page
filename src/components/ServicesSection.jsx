@@ -37,6 +37,7 @@ export default function ServicesSection() {
 
   return (
     <section
+      id="api"
       className="
         w-full
         bg-[#fffaf5]
@@ -65,7 +66,7 @@ export default function ServicesSection() {
               items-center
               gap-2
               text-sm
-              font-medium
+              font-bold
               text-black
               mb-4
             "
