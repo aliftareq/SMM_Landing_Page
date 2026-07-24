@@ -37,7 +37,7 @@ export default function ServicesSection() {
 
   return (
     <section
-      id="api"
+      id="services"
       className="
         w-full
         bg-[#fffaf5]

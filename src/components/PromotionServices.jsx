@@ -51,7 +51,6 @@ const services = [
 function ServiceCard({ item }) {
   return (
     <div
-      id="services"
       className="
         w-78.5
         max-sm:w-[calc(100vw-48px)]
