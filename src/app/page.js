@@ -1,4 +1,5 @@
 import AboutSection from "@/components/AboutSection";
+import Footer from "@/components/footer";
 import Hero from "@/components/Hero";
 import PromotionServices from "@/components/PromotionServices";
 import ServicesSection from "@/components/ServicesSection";
@@ -12,6 +13,7 @@ export default function Home() {
       <AboutSection />
       <ServicesSection />
       <WorkingProcess />
+      <Footer />
     </main>
   );
 }
